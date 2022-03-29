@@ -1,0 +1,5 @@
+.welcome{
+    display: grid;
+    place-items: center;
+    color: teal;
+}

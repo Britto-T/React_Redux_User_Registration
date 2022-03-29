@@ -1,0 +1,43 @@
+.wrapper{
+    width:95%;
+    margin:auto;
+    padding:3rem;
+    background-color: white;
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-column-gap:20px;
+    grid-row-gap:20px;
+}
+
+.card{
+    height:200px;
+    background-color: #756f5d;
+    color:#f8edd3;
+    font-size: 1rem;
+    padding-left: .3rem;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width:700px){
+    .wrapper{
+        width:98%;
+        margin:0.5rem auto;
+        padding:1rem;
+        grid-template-columns:repeat(2,1fr) ;
+    }
+    .card{
+        height:250px;
+    }
+}
+
+@media only screen and (max-width:500px){
+    .wrapper{
+        grid-template-columns:repeat(1,1fr) ;
+    }
+    .card{
+        height:300px;
+    }
+}
+

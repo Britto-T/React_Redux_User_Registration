@@ -1,0 +1,12 @@
+.addButton{
+    margin:1rem 0 0 90%;
+    background-color:crimson;
+    border-radius: 10px;
+    height:3rem;
+    font-size: 1rem;
+    color:white;
+}
+
+.errorSpan{
+    color:red;
+  }

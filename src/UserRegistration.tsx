@@ -4,8 +4,7 @@ import "./UserRegistration.css"
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "./redux/hooks";
-import { useEffect } from "react";
-import { getUserDetails,setUserDetails,addUserDetails } from "./redux/user/userSlice";
+import { addUserDetails } from "./redux/user/userSlice";
 
 const UserRegistration=()=>{
 
@@ -23,6 +22,7 @@ const UserRegistration=()=>{
     const onFormSubmit = (data: any) => {
         const userData =  pushUserData(data);
         dispatch(addUserDetails(userData));
+        setButtonPopup(false);
       };
     
     const pushUserData = (data: any) => {   
@@ -44,6 +44,7 @@ const UserRegistration=()=>{
     return(
         <div className="userReg">
             <button onClick={()=>setButtonPopup(true)} className="addButton">Add New User</button>
+            
             <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
                 <h4>New User Registration</h4>
                 

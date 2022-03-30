@@ -5,6 +5,7 @@ import { useEffect} from "react";
 import { getUserDetails,deleteUserDetails,editUserDetails } from "./redux/user/userSlice";
 import "./UserDisplay.css";
 import UserRegistration from "./UserRegistration";
+import EditUserRegistration from "./EditRegistration";
 
 const UserDisplay = () => {
   const dispatch = useDispatch();
@@ -14,10 +15,13 @@ const UserDisplay = () => {
     dispatch(getUserDetails());
   }, []);
 
-  const handleclick=(id:any,name:any)=>{
+  const handleclick=(id:any,name:any,city:any,street:any,zipcode:any)=>{
     var editData = { 
       id:id, 
-      name:name
+      name:name,
+      city:city,
+      street:street,
+      zipcode:zipcode
     }
     dispatch(editUserDetails(editData));
   }
@@ -29,26 +33,15 @@ const UserDisplay = () => {
         <div className="wrapper">
           {user.map((item: any, key: any) => {
             return (
-              // <div className="card" key={key}>
-              //   <div>Id:{item?.id}</div>
-              //   <div>Id:<input value={item?.id}/></div>
-              //   <div>Name: {item?.name}</div>
-              //   <div>Address</div>
-              //   <div>Street: {item?.address?.street}</div>
-              //   <div>City: {item?.address?.city}</div>
-              //   <div>ZipCode: {item?.address?.zipcode}</div>
-              //   <div><button>Edit</button>
-              //   <button onClick={()=>dispatch(deleteUserDetails(item?.id))}>Delete</button></div>
-              // </div>
               <div className="card" key={key}>
-                <div>Id:<input value={item?.id}/></div>
-                <div>Name:<input value={item?.name}/></div>
+                <div>Id:{item?.id}</div>
+                <div>Name: {item?.name}</div>
                 <div>Address</div>
-                <div>Street:<input value={item?.address?.street}/></div>
-                <div>City: <input value={item?.address?.city}/></div>
-                <div>ZipCode:<input value={item?.address?.zipcode}/></div>
-                <div><button onClick={()=>handleclick(item?.id,item?.name)}>Edit</button>
-                <button onClick={()=>dispatch(deleteUserDetails(item?.id))}>Delete</button></div>
+                <div>Street: {item?.address?.street}</div>
+                <div>City: {item?.address?.city}</div>
+                <div>ZipCode: {item?.address?.zipcode}</div>
+                <EditUserRegistration userId={item?.id} userName={item?.name} street={item?.address?.street} city={item?.address?.city} zipcode={item?.address?.zipcode} />
+                <button onClick={()=>dispatch(deleteUserDetails(item?.id))}>Delete</button>
               </div>
             );
           })}

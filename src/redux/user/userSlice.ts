@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from '../store';
 import axios from "axios";
 import UserDetails from '../../UserDetails';
-import { isThrowStatement } from 'typescript';
 
 interface IUser{
     userDetails:any
@@ -20,18 +19,24 @@ const userSlice = createSlice({
             state.userDetails = action.payload;
         },
         addUserDetails(state,action:PayloadAction<any>){  
-            action.payload.id=state.userDetails.length+1;
+            var maxxValue:any=[];
+            state.userDetails.map((item:any,key:any)=>{
+                maxxValue.push(item.id)    
+            })
+            action.payload.id = Math.max(...maxxValue) + 1; 
             state.userDetails.push(action.payload);
         },
         deleteUserDetails(state,action:PayloadAction<number>){
             state.userDetails =  state.userDetails.filter((item:any) =>item.id !== action.payload);
         },
         editUserDetails(state,action:PayloadAction<any>){
+
             state.userDetails.forEach(function (item:any) {
-                if(item.id == action.payload.id){
-                    item.name = action.payload.id
+                if(item.id === action.payload.id){
+                    item.name = action.payload.name
                 }
             });
+
             console.log(state.userDetails);
         }
     }

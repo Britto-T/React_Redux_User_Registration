@@ -6,6 +6,9 @@ import { useDispatch } from "react-redux";
 import { useAppSelector } from "./redux/hooks";
 import { addUserDetails } from "./redux/user/userSlice";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const UserRegistration=()=>{
 
     const [buttonPopup,setButtonPopup] = useState(false);
@@ -23,6 +26,9 @@ const UserRegistration=()=>{
         const userData =  pushUserData(data);
         dispatch(addUserDetails(userData));
         setButtonPopup(false);
+        toast.success("user added successfully",{
+          theme:"colored"
+        });
       };
     
     const pushUserData = (data: any) => {   
@@ -116,6 +122,7 @@ const UserRegistration=()=>{
         </form>
 
             </Popup>
+            <ToastContainer />
         </div>
     )
 }

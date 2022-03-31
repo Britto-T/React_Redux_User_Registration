@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "./redux/hooks";
 import { editUserDetails } from "./redux/user/userSlice";
+import { stringify } from "querystring";
 
 interface IEditUserRegistration{
     userId:string;
@@ -11,7 +12,6 @@ interface IEditUserRegistration{
    city:string;
    street:string;
    zipcode:string
-
 }
 
 const EditUserRegistration:React.FC<IEditUserRegistration>=(props:any)=>{
@@ -28,7 +28,7 @@ const EditUserRegistration:React.FC<IEditUserRegistration>=(props:any)=>{
       } = useForm();
 
     const onFormSubmit = (data: any) => {
-        console.log(data);
+        console.log("Form Submit=" + data);
       };
 
     const handleNameClick=(event:any)=>{
@@ -40,6 +40,9 @@ const EditUserRegistration:React.FC<IEditUserRegistration>=(props:any)=>{
         dispatch(editUserDetails(editData));
     }
 
+    useEffect(()=>{
+        
+    },[])
     const onerror =()=>{
 
     }
@@ -62,7 +65,7 @@ const EditUserRegistration:React.FC<IEditUserRegistration>=(props:any)=>{
               <label>street Name</label>
             </div> 
             <div>
-              <input type="text" {...register("street")} value={props.street} placeholder="street" readOnly={false}/>
+              <input type="text" {...register("street")} defaultValue={props.street} placeholder="street"/>
             </div>
             <div>
               <label>City Name</label>

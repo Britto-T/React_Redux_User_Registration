@@ -6,7 +6,6 @@ import { getUserDetails,deleteUserDetails,editUserDetails } from "./redux/user/u
 import "./UserDisplay.css";
 import UserRegistration from "./UserRegistration";
 import EditUserRegistration from "./EditRegistration";
-import UserGrid from "./UserGrid";
 
 const UserDisplay = () => {
   const dispatch = useDispatch();
@@ -48,7 +47,6 @@ const UserDisplay = () => {
           })}
         </div>
       }
-      <UserGrid/>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "./redux/hooks";
 import { useEffect} from "react";
@@ -10,28 +10,15 @@ import EditUserRegistration from "./EditRegistration";
 const UserDisplay = () => {
   const dispatch = useDispatch();
   const user = useAppSelector((state) => state.user.userDetails);
-
-  useEffect(() => {
-    dispatch(getUserDetails());
-  }, []);
-
-  const handleclick=(id:any,name:any,city:any,street:any,zipcode:any)=>{
-    var editData = { 
-      id:id, 
-      name:name,
-      city:city,
-      street:street,
-      zipcode:zipcode
-    }
-    dispatch(editUserDetails(editData));
-  }
+  const [searchUser,setSearchUser] = useState("");
 
   return (
     <div>
+      <input type="text" name="text" className="search" placeholder="Search here!" onChange={(event) => setSearchUser(event.target.value)}/>
         <UserRegistration/>
-      {
+      {       
         <div className="wrapper">
-          {user.map((item: any, key: any) => {
+          {user.filter((item:any)=>item.name.toLowerCase().includes(searchUser.toLowerCase())).map((item: any, key: any) => {
             return (
               <div className="card" key={key}>
                 <div>Id:{item?.id}</div>

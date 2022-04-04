@@ -3,6 +3,7 @@ import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
 import Home from "./Home"
 import Users from "./Users"
 import PrimeGrid from "./PrimeGrid"
+import UserTileGrid from "./UserTileGrid"
 
 const NavBar=()=>{
     return(
@@ -14,6 +15,7 @@ const NavBar=()=>{
           <li><Link to="Home">Home</Link></li>
           <li><Link to="Users">Users</Link></li>
           <li><Link to="PrimeGrid">Prime Grid</Link></li>
+          <li><Link to="Tile-Grid">Tile-Grid</Link></li>
           <li><a href="#">Factorial</a></li>
           <li><Link to="Student">Student</Link></li>
       </ul>
@@ -22,6 +24,7 @@ const NavBar=()=>{
         <Route path="Home" element={<Home/>}></Route>
         <Route path="Users" element={<Users/>}></Route>
         <Route path="PrimeGrid" element={<PrimeGrid/>}></Route>
+        <Route path="Tile-Grid" element={<UserTileGrid/>}></Route>
       </Routes>
     </BrowserRouter>
     )

@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "./redux/hooks";
 import { addUserDetails } from "./redux/user/userSlice";
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -47,10 +46,10 @@ const UserRegistration=()=>{
     const onerror =()=>{
 
     }
+   
     return(
         <div className="userReg">
-            <button onClick={()=>setButtonPopup(true)} className="addButton">Add New User</button>
-            
+          <button onClick={()=>setButtonPopup(true)} className="addButton">Add New User</button>
             <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
                 <h4>New User Registration</h4>
                 
@@ -65,16 +64,6 @@ const UserRegistration=()=>{
                 <p className="errorSpan">This field is required</p>
               ):null}
             </div>
-            {/* <div>
-              <label>Phone Number</label>
-            </div> */}
-            {/* <div>
-              <input
-                type="text" {...register("phone",{required:true,maxLength:15})} placeholder="Phone Number"/>
-               {errors?.name?.type ==="required" ?(
-                <p className="errorSpan">This field is required</p>
-              ):null}
-            </div> */}
             <div>
               <label>street Name</label>
             </div> 
@@ -87,22 +76,6 @@ const UserRegistration=()=>{
             <div>
               <input type="text" {...register("city")} placeholder="city"/>
             </div>
-
-            {/* <div>
-              <label>E-Mail</label>
-            </div>
-            <div>
-              <input type="email" {...register("email", {required:true, 
-              pattern:{value:/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              message:'Please enter a valid email'}
-            })} placeholder="E-Mail" />
-              {errors?.name?.type ==="required" ?(
-                <p className="errorSpan">This field is required</p>
-              ):null}
-               {errors?.name?.type ==="required" ?(
-                <p className="errorSpan">Please Enter a valid E-mail</p>
-              ):null}
-            </div> */}
             <div>
               <label>Zip Code</label>
             </div>

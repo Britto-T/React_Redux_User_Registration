@@ -20,6 +20,13 @@
     justify-content: center;
 }
 
+.search{
+    border-radius: 10px;
+    font-size: 1rem;
+    color:green;
+    background-color: aquamarine;
+}
+
 @media only screen and (max-width:700px){
     .wrapper{
         width:98%;

@@ -7,6 +7,7 @@ import UserRegistration from "./UserRegistration";
 import { useEffect} from "react";
 import { getUserDetails} from "./redux/user/userSlice";
 import { useDispatch } from "react-redux";
+import GlobalFilter from "./GlobalFilter";
 
 const UserTileGrid=()=>{
     const[selectMode,setSelectMode] = useState(false)
@@ -18,9 +19,11 @@ const UserTileGrid=()=>{
 
     return(
         <>
+        <div>
         <InputSwitch checked={selectMode} onChange={(e) => setSelectMode(e.target.value)}/>
+        </div>
           {!selectMode?  
-        <Users/> :<PrimeGrid/>}
+        <Users/> :<><PrimeGrid/><GlobalFilter/></>}
         </>
     )
 }

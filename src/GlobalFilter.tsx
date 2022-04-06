@@ -44,6 +44,7 @@ const GlobalFilter = () => {
         return (
             <div className="flex justify-content-between align-items-center">
                 <h5 className="m-0">Users</h5>
+                <Button type="button" icon="pi pi-filter-slash" label="Clear" className="p-button-outlined" onClick={clearFilter1} />
                 <span className="p-input-icon-left">
                     <i className="pi pi-search" />
                     <InputText value={globalFilterValue} onChange={onGlobalFilterChange} placeholder="Keyword Search" />
@@ -52,20 +53,39 @@ const GlobalFilter = () => {
         )
     }
 
+    const clearFilter1 = () => {
+        initFilters1();
+    }
+
+    useEffect(() => {
+        initFilters1();
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    const initFilters1 = () => {
+        setFilters({
+            'global': { value: null, matchMode: FilterMatchMode.CONTAINS },
+            'id': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+            'name': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+            'address.street': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+            'address.city': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+            'address.zipcode': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] }
+        });
+        setGlobalFilterValue('');
+    }
+
     const header = renderHeader();
 
     const textEditor = (options:any) => {
         console.log(options);
+        console.log(options.value);
+        console.log(options.rowData.address.street);
         return (<InputText type="text" value={options.value} onChange={(e) => options.editorCallback(e.target.value)} />);
     }
 
-    
     const onRowEditComplete = (e:any) => {
         let _user = [...user];
         let { newData, index } = e;
-
         _user[index] = newData;
-
         dispatch(setUserDetails(_user));
     }
     

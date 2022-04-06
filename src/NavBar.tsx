@@ -4,6 +4,8 @@ import Home from "./Home"
 import Users from "./Users"
 import PrimeGrid from "./PrimeGrid"
 import UserTileGrid from "./UserTileGrid"
+import PrimeDropDown from "./PrimeDropDown"
+import PrimeFileUpload from "./PrimeFileUpload"
 
 const NavBar=()=>{
     return(
@@ -16,6 +18,8 @@ const NavBar=()=>{
           <li><Link to="Users">Users</Link></li>
           <li><Link to="PrimeGrid">Prime Grid</Link></li>
           <li><Link to="Tile-Grid">Tile-Grid</Link></li>
+          <li><Link to="PrimeDropDown">DropDown</Link></li>
+          <li><Link to="PrimeFileUpload">File Upload</Link></li>
           <li><a href="#">Factorial</a></li>
           <li><Link to="Student">Student</Link></li>
       </ul>
@@ -25,6 +29,8 @@ const NavBar=()=>{
         <Route path="Users" element={<Users/>}></Route>
         <Route path="PrimeGrid" element={<PrimeGrid/>}></Route>
         <Route path="Tile-Grid" element={<UserTileGrid/>}></Route>
+        <Route path="PrimeDropDown" element={<PrimeDropDown/>}></Route>
+        <Route path="PrimeFileUpload" element={<PrimeFileUpload/>}></Route>
       </Routes>
     </BrowserRouter>
     )

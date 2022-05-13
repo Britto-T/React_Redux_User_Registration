@@ -20,6 +20,7 @@ import ViewBounds from "./ViewBounds"
 import AnimateExample from "./AnimatedPane"
 import MapWithPlaceholder from "./MapPlaceHolder"
 import ReactControlExample from "./ReactControl"
+import PrimeCalendar from "./PrimeCalendar"
 
 const NavBar=()=>{
     return(
@@ -49,6 +50,7 @@ const NavBar=()=>{
           {/* <li><Link to="ExternalState">ExternalState</Link></li> */}
           <li><Link to="Placeholder">Placeholder</Link></li>
           <li><Link to="ReactControl">ReactControl</Link></li>
+          <li><Link to="PrimeCalendar">PrimeCalendar</Link></li>
           <li><a href="#">Factorial</a></li>
           <li><Link to="Student">Student</Link></li>
       </ul>    
@@ -75,6 +77,7 @@ const NavBar=()=>{
         {/* <Route path="ExternalState" element={<ExternalStateExample/>}></Route> */}
         <Route path="Placeholder" element={<MapWithPlaceholder/>}></Route>
         <Route path="ReactControl" element={<ReactControlExample/>}></Route>
+        <Route path="PrimeCalendar" element={<PrimeCalendar/>}></Route>
       </Routes>
     </BrowserRouter>
     )
